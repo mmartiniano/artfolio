@@ -135,6 +135,8 @@ public class PostMBean implements Serializable {
 	}
 	
 	private List<Tag> stringToTagList(String str) {
+		if(str.isBlank()) return null;
+		
 		String[] split = str.split(", ");
 		ArrayList<Tag> list = new ArrayList<Tag>();
 		
@@ -149,7 +151,9 @@ public class PostMBean implements Serializable {
 		return list;
 	}
 	
-	private String tagListToString(List<Tag> list) {
+	private String tagListToString(ArrayList<Tag> list) {
+		if(list.isEmpty()) return null;
+		
 		String str = "";
 		
 		for(Tag tag: list) {
