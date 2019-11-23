@@ -1,0 +1,866 @@
+/* Set the page font */
+* {
+	font-family: 'Quicksand', sans-serif;
+}
+
+/* Reset body padding and height */
+html, body {
+	min-height: 100vh;
+	padding: 0;
+}
+
+/* Black background */
+.black {
+	background-color: #575757;
+}
+
+/* Reset Materialize parallax container height */
+/*.parallax-container {
+	height: 70vh;
+}*/
+
+/* Reset Materialize parallax style */
+/*.parallax-container .parallax {
+	position: fixed;
+	height: inherit;
+	overflow: hidden;
+	transform: translateY(0);
+	transition: transform 0.1s;
+}*/
+
+/* Reset Materialize parallax image style */
+/*.parallax-container .parallax img {
+	opacity: 1;	
+}*/
+
+.output {
+	font-size: 13px;
+}
+
+.brandlogo {
+	width: 200px;
+	height: 100%;
+	margin-left: 10px;
+}
+
+.brandlogo img {
+	width: 20%;
+	height: auto;
+}
+
+.brandlogo span {
+	margin-left: 5px;
+	font-size: 18px;
+}
+
+/* Navbar */
+.navbar {
+	width: 100%;
+	height: 55px;
+	position: relative;
+	box-shadow: 0 2px 2px -2px rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 6px 5px -5px rgba(0,0,0,0.2);
+	color: #575757;
+	padding: 0 10px 0 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center !important;
+}
+
+/* No shadow navbar */
+.navbar.flat {
+	box-shadow: none !important;
+}
+
+/* Fixed Navbar */
+.navbar.fixed {
+	position: fixed !important;
+	top: 0;
+}
+
+/* Left-aligned content navbar */
+.navbar.left {
+	justify-content: flex-start;
+}
+
+/* Center-aligned content navbar */
+.navbar.center {
+	justify-content: center;
+}
+
+/* Right-aligned content navbar */
+.navbar.right {
+	justify-content: flex-end;
+}
+
+/* Left alignment */
+.navbar > .left {
+	float: none;
+	margin-right: auto;
+}
+
+/* Center alignment */
+.navbar > .center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Right alignment */
+.navbar > .right {
+	float: none;
+	margin-left: auto;
+}
+
+
+/* Clears default text-decorations from all a elements inside .navbar */
+.navbar a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* Hide jsf required form */
+.nav-form {
+	display: contents !important;
+}
+
+/* Profile image and user's name wrapper */
+.navbar .user {
+	margin-left: 5px;
+	display: flex;
+	align-items: center;
+	font-size: 18px;
+	height: 100%;
+	margin-right: 40px;
+}
+
+/* User's name */
+.user span {
+	margin-left: 5px;
+}
+
+/* Resets the default ul style */
+.navbar ul {
+	min-height: 100%;
+	list-style: none;
+	display: inline-block;
+}
+
+/* Resets the default li style */
+.navbar ul li {
+	height: 55px;
+	float: left;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 5px;
+	border-radius: 5px 5px 0 0;
+	background-color: transparent;
+}
+
+.navbar ul li.active {
+	background-color: rgba(0, 0, 0, 0.07);
+}
+
+/* li after li style */
+li +  li {
+	margin-left: 25px !important;
+}
+
+/* Reset the default li style */
+.navbar ul li {
+	min-height: 55px;
+	float: left;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	border-top: none !important;
+	padding: 5px;
+	font-size: 18px;
+	background-color: transparent;
+}
+
+/* Navbar ul li links */
+ul li a {
+	color: inherit;
+}
+
+/* li a non-hoverable */
+ul li a:hover {
+	background-color: transparent !important;
+}
+
+/* li hoverable */
+ul.hover li:hover {
+	background-color: #E7E7E7 !important;
+}
+
+/* Shadow */
+.shadow {
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.posts-list {
+	padding-top: 55px !important;
+	right: 0 !important;
+	z-index: 0;
+	min-height: 100vh;
+}
+
+.post-options{
+	margin-top: 8px;
+}
+
+.post-options a {
+	margin-left: 15px;
+	color: inherit;
+}
+
+.post-options a i {
+	font-size: 20px !important;
+}
+
+/* Form */
+
+/* Form input wrapper */
+.input-field, .input-box {
+	position: relative;
+}
+
+/* Adds a margin to separate sequencial fields */
+[class*="input-"] + [class*="input-"] {
+	margin-top: 20px;
+}
+
+/* Inputs */
+.input-field input, .input-box input, .input-field textarea, .input-box textarea {
+	height: 40px;
+	width: 100%;
+	font-family: inherit;
+	outline: none;
+	box-shadow: none !important;
+	text-indent: 10px;
+	color: #575757;
+	font-weight: bold !important;
+	transition: border 0.2s;
+}
+
+/* Input/Textarea underline */
+.input-field input, .input-field textarea {
+	border: none;
+	border-bottom: 2px solid #A9A9A9;
+}
+
+/* Textarea size and resize */
+[class*="input-"] textarea {
+	text-indent: 0;
+	padding: 10px;
+	height: 50px;
+	resize: none;
+	overflow: hidden;
+}
+
+/* Input/Textarea underline focus */
+.input-field input:focus, .input-field textarea:focus {
+	border-bottom-color: #575757;
+}
+
+/* Input/Textarea boxed */
+.input-box input, .input-box textarea {
+	border-radius: 10px;
+	border: 2px solid #A9A9A9;
+}
+
+/* Input/Textarea underline focus */
+.input-box input:focus, .input-box textarea:focus {
+	border-color: #575757;
+}
+
+/* Placeholder color */
+::placeholder {
+  color: #A9A9A9;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #A9A9A9;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #A9A9A9;
+}
+
+/* Removes autofill yellow background */
+input:-webkit-autofill {
+    transition: all 5000s ease-in-out 0s;
+}
+
+/* Button */
+.input-field input[type="submit"], .input-field button {
+	margin-top: 5px;
+	height: 40px;
+	width: 100%;
+	min-width: none;
+	font-family: inherit;
+	outline: none;
+	box-shadow: none !important;
+	text-indent: 10px;
+	transition: border 0.2s;
+	color: #575757;
+	border: 2px solid #575757;
+	border-radius: 5px;
+	font-weight: bold !important;
+	cursor: pointer;
+	transition: opacity 0.5s;
+}
+
+/* Button focus */
+.input-field button:active {
+	opacity: 0.6;
+}
+
+/* Modal */
+
+/* Modal and overlayer */
+.modal, .overlayer {
+	display: none;
+	opacity: 0;
+	transition: opacity 0.2s linear;
+	position: fixed;
+}
+
+/* Unactive modal */
+.modal {
+	display: none;
+	opacity: 0;
+	will-change: opacity;
+	transform: scale(0.85, 0.85);
+	transition: opacity 0.2s, transform 0.2s, top 0.1s;
+	background-color: #FAFAFA;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+	border-radius: 10px;
+	z-index: 10;
+	overflow-y: auto;
+	position: fixed;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	top: 10%;
+	left: 0;
+	min-height: 30vh;
+	max-height: 40vh;
+}
+
+/* Modal unactive style for screen width smaller than 992px */
+@media only screen and (min-width: 992px) {
+	.modal {
+		width: 60%;
+		margin-left: 20%;
+		margin-right: 20%;
+		max-height: 50vh;
+	}
+}
+
+/* Active modal */
+.modal.active {
+	transform: scale(1, 1);
+	top: 15%;
+	opacity: 1;
+}
+
+/* Image modal */
+.modal.img {
+	max-height: none;
+	overflow: hidden;
+	background-color: transparent !important;
+	box-shadow: none;
+	margin-right: 0;
+	margin-left: 0;
+	top: 0;
+}
+
+/* Overlayer */
+.overlayer {
+	background-color: black;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+}
+
+/* Active overlayer */
+.overlayer.active {
+	opacity: 0.5;
+}
+
+
+/* Components */
+
+/* Logo */
+.logo {
+	width: 60px;
+	height: auto;
+}
+
+/* Brand */
+.brand {
+	font-weight: bold;
+	font-size: 30px;
+}
+
+/* Brand after logo */
+/*.logo + .brand {
+	margin-top: -8px;
+}
+*/
+
+/* Brand after logo */
+.logo + .brand {
+	margin-left: 5px;
+}
+
+/* Social networks wrapper */
+.social {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	left: -10px;
+}
+
+/* Space between social networks */
+.social a {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+/* Social network */
+.social-network {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #A7A7A7;
+	color: #575757;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Social network icon */
+.social i {
+	font-size: 20px;
+	color: #575757;
+}
+
+/* Social network username */
+.social-network span {
+	margin-left: 5px;
+	font-weight: bold;
+}
+
+/* Username */
+.username {
+	margin-top: 0;
+	font-size: 15px;
+	color: #575757;
+}
+
+/* Artistic name */
+.artistic-name {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: bold;
+	font-size: 40px;
+}
+
+/* Slogan */
+.slogan {
+	margin-top: 0;
+	font-size: 20px;
+}
+
+/* Name */
+.name {
+	font-weight: bold;
+	font-size: 22px;
+}
+
+/* Bio */
+.bio {
+	text-align: left;
+	font-size: 18px;
+}
+
+/* Extra large profile image wrapper */
+.profile.extra-large {
+	height: 300px;
+	width: 300px;
+}
+
+/* Large profile image wrapper */
+.profile.large {
+	height: 250px;
+	width: 250px;
+}
+
+/* Profile image wrapper */
+.profile {
+	/* position: absolute; */
+	/*transition: all 0.1s ;*/
+}
+
+/* Small profile image wrapper */
+.profile.small {
+	height: 40px;
+	width: 40px;
+}
+
+.profile.extra-small {
+	margin-top: -15px;
+	height: 2rem;
+	width: 2rem;
+}
+
+/* Main profile image wrapper */
+.overlay-cover {
+	position: relative;
+	top: -100px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: -100px;
+}
+
+/* Main profile image */
+.overlay-cover img {
+	border: 5px solid white;
+	margin-right: 15px;
+}
+
+/* Header cover */
+.cover {
+	background-image: url("../img/af-artessauro-img-5.jpg");
+	background-position: center;
+	height: 40vh;
+	width: 100%;
+}
+
+/* User's data wrapper */
+.user-data {
+	position: relative;
+}
+
+/* Section style */
+.section {
+	padding: 0;
+	min-height: calc(100vh - 55px);
+}
+
+/* Section name */
+.section-name {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.section > .row {
+	border-bottom: none !important;
+}
+
+/* Images gallery */
+.gallery {
+	width: 100%;
+	max-width: 90%;
+	margin: 0 auto;
+	column-count: 3;
+}
+
+/* Images gallery on small screens */
+@media only screen and (max-width: 992px) {
+	.gallery {
+		column-count: 2;
+	}
+
+	.cover {
+		height: 30vh;
+	}
+
+	.overlay-cover .profile.large {
+		height: 200px;
+		width: 200px;
+	}
+
+	.social-network {
+		display: content;
+		height: 35px;
+		width: 35px;
+	}
+
+	.social-network span {
+		display: none !important;
+	}
+} 
+
+/* Gallery item */
+.gallery-item {
+	margin-bottom: 20px;
+	break-inside: avoid-column;
+}
+
+/* Gallery item image */
+.gallery-item img {
+	cursor: pointer;
+	/* object-fit: cover; */
+	max-width: 100%;
+	display: block;
+}
+
+/* Desktop screen draw */
+.desktop {
+	width: 350px;
+	height: 200px;
+	overflow: hidden;
+}
+
+/* IOS interface draw */
+.desktop .circle {
+	margin-top: 5px;
+	margin-left: 5px;
+	height: 10px;
+	width: 10px;
+}
+
+/* Desktop draw after Desktop draw */
+.desktop + .desktop {
+	transform: translate(25%, -50%);
+}
+
+/* General styles */
+
+/* Hide overflow content */
+.overhide {
+	overflow: hidden;
+}
+
+/* Overflow auto */
+.overauto {
+	overflow-y: auto;
+}
+
+/* Rounded */
+.round {
+	border-radius: 3%;
+}
+
+/* Left rounded */
+.round-left {
+	border-radius: 3% 0 0 3%;
+}
+
+/* Top rounded */
+.round-top {
+	border-radius: 3% 3% 0 0;
+}
+
+/* Right rounded */
+.round-right {
+	border-radius: 0 3% 3% 0;
+}
+
+/* Bottom rounded */
+.round-bottom {
+	border-radius: 0 0 3% 3%;
+}
+
+
+/* Layout */
+
+.h-100vh {
+	height: 100vh;
+}
+
+/* Display flex container */
+.flex {
+	display: flex;
+}
+
+/* Left aligned content */
+.flex.left-content {
+	justify-content: flex-start;
+}
+
+/* Center aligned content */
+.flex.center {
+	justify-content: center;
+}
+
+/* Right aligned content */
+.flex.right-content {
+	justify-content: flex-end;
+}
+
+/* Content starts on container's top */
+.flex.top {
+	align-items: flex-start;
+}
+
+/* Vertical align content */
+.flex.middle {
+	align-items: center;
+}
+
+/* Content starts on container's bottom */
+.flex.bottom {
+	align-items: flex-end;
+}
+
+/* Left alignment */
+.flex > .left {
+	float: none;
+	margin-right: auto;
+}
+
+/* Center alignment */
+.flex > .center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Right alignment */
+.flex > .right {
+	float: none;
+	margin-left: auto;
+}
+
+/* Begin on top */
+.flex > .top {
+	align-self: flex-start;
+}
+
+/* Begin on middle */
+.flex > .middle {
+	align-self: center;
+}
+
+/* Begin on bottom */
+.flex > .bottom {
+	align-self: flex-end;
+}
+
+/* Divider */
+.line {
+	border-color: #FFF;
+	opacity: 0.5;
+	width: 100%;
+}
+
+/* Text between dividers wrapper */
+.scratted-wrapper {
+	position: relative;
+}
+
+/* Text between dividers */
+.scratted {
+	padding: 10px;
+	margin-top: -1px;
+	position: absolute;
+	color: #A9A9A9;
+}
+
+.h100 {
+	height: 100vh;
+}
+
+/* Margin top */
+.mt-25 {
+	margin-top: 25px;
+}
+
+/* Margin top */
+.mt-5 {
+	margin-top: 5%;
+}
+
+/* Margin botom */
+.mb-0 {
+	margin-bottom: 0;
+}
+
+/* Fade out animation */
+.fadeout {
+	transform: translateX(0);
+	opacity: 1;
+	transition: transform 0.2s, opacity 0.5s;
+	/*transition: transform 0.5s cubic-bezier(0.26,-0.31, 0.01, 1.07), opacity 0.5s;*/
+}
+
+/* Typography */
+
+/* Bold text */
+.bold {
+	font-weight: bold;
+}
+
+/* Black text */
+.black-text {
+	color: #575757;
+}
+
+
+.zd3 {
+	box-shadow: 20px 0px 10px -15px rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.drag-image {
+	height: 200px;
+	width: 200px;
+	border: 1px solid #A7A7A7;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.drag-image img {
+	object-fit: fill;
+}
+
+.drag-image i {
+	color: #A7A7A7;
+	font-size: 120px;
+}
+
+.drag-image input {
+	height: 100% !important;
+	width: 100% !important;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.aside {
+	height: calc(100vh - 55px);
+	bottom: 0;
+}
+
+
+@media only screen and (min-width: 992px) {
+	.aside {
+		position: fixed;
+	}
+	
+	.posts-list {
+		width: 100%;
+	}
+}
+
+.image-list-item {
+	margin-top: 50px;
+}
+
+.zi10 {
+	z-index: 10;
+}
+
+.zi11 {
+	z-index: 11;
+}

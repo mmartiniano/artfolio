@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="content">	
+		<!-- First section -->
+		<section class="section">
+	
+			<div>
+				<div class="row">
+					<div class="col hide-on-med-and-down l5 container h100 flex center middle fixed">
+						<div>
+							<div class="file-field input-field">
+						      <div class="drag-image" id="input-file-div">
+						        <h:graphicImage styleClass="responsive-img" value="#{userMBean.sessionUser.image}"/>
+						      </div>
+						    </div>
+						    
+						    <h:outputText  class="name row" value="#{userMBean.sessionUser.name}" />
+
+						   	<h:outputText  class="username row" value="#{userMBean.sessionUser.username}" />
+						</div>
+					</div>
+					
+					
+					
+					
+					<div class="row col s12 m12 l7 offset-l5">
+						<div class="gallery mt-25">
+							<ui:repeat var="post" value="#{postMBean.sessionUserPosts}">
+								<div class="gallery-item">
+									<h:graphicImage styleClass="img-modal-trigger" value="#{post.image}"/>
+								</div>
+							</ui:repeat>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<h:outputScript library="js" name="portfolio.js" />
+	</ui:define>
+</ui:composition>

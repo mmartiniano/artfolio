@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="content">
+
+		<!-- Header and navbar -->
+		<header>
+			<nav class="navbar white fixed zi11">
+				<div class="brandlogo flex middle left">
+					<h:graphicImage library="img" name="artfolio.png"/>
+					<span class="black-text bold">Artfolio</span>
+				</div>
+				
+				<h:form class="nav-form">
+					<ul class="bold right hide-on-med-and-down">
+						<li class="active"> <h:link outcome="index"><i class="material-icons">collections</i></h:link> </li>
+						<li> <h:link a:target="_blank" outcome="portfolio"><i class="material-icons">view_quilt</i></h:link> </li>
+						<li> <h:commandLink action="#{userMBean.editForm}"><i class="material-icons">account_circle</i></h:commandLink> </li>
+						<li> <h:commandLink action="#{userMBean.logOut}"><i class="material-icons">exit_to_app</i></h:commandLink> </li>
+					</ul>
+				</h:form>
+			</nav>
+		</header>
+	
+		<!-- First section -->
+		<section class="section">
+	
+			<div>
+				<div class="row">
+					<div class="zi10 col s12 m12 l5 zd3 flex middle center round-right white container overauto aside">
+						<div>
+						<h:messages styleClass="output flex center red-text"/>
+							<h:form enctype="multipart/form-data">
+								<div class="file-field input-field">
+							      <div class="drag-image" id="input-file-div">
+							        <i id="image-placeholder" class="material-icons">image</i>
+							        <h:inputFile value="#{postMBean.image}" a:id="imgFile"/>
+							      </div>
+							    </div>
+	
+							    <div class="input-field row">
+									<h:inputText value="#{postMBean.post.caption}" a:placeholder="Caption" class="browser-default"/>
+								</div>
+	
+								<div class="input-field row">
+									<h:inputText value="#{postMBean.tags}" a:placeholder="Tags" class="browser-default"/>
+								</div>
+	
+								<!-- Submit button -->
+								<div class="input-field row">
+									<h:commandButton action="#{postMBean.create}" class="white right" value="Create new post"/>
+								</div>
+							</h:form>
+						</div>
+					</div>
+					
+					<div class="row col l7 s12 m12 offset-l5 posts-list">
+						<div class="col s10 offset-s1 l6 offset-l3">
+							<ui:repeat var="post" value="#{postMBean.sessionUserPosts}">
+								<div class="image-list-item">
+									<h:graphicImage styleClass="responsive-img" value="#{post.image}"/>
+									<div class="right post-options">
+										<h:form>
+											<h:commandLink action="#{postMBean.setPost(post)}" a:mark="edit">
+												<i class="material-icons">edit</i>
+											</h:commandLink>
+											<h:commandLink action="#{postMBean.delete(post)}">
+												<i class="material-icons">delete</i>
+											</h:commandLink>
+										</h:form>
+									</div>
+								</div>
+							</ui:repeat>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<h:outputScript library="js" name="dashboard.js" />
+	</ui:define>
+</ui:composition>

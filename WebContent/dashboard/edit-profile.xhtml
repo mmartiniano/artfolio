@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="content">
+
+		<!-- Header and navbar -->
+		<header>
+			<nav class="navbar white fixed zi11">
+				<div class="brandlogo flex middle left">
+					<h:graphicImage library="img" name="artfolio.png"/>
+					<span class="black-text bold">Artfolio</span>
+				</div>
+				
+				<h:form class="nav-form">
+					<ul class="bold right hide-on-med-and-down">
+						<li> <h:link outcome="index"><i class="material-icons">collections</i></h:link> </li>
+						<li> <h:link a:target="_blank" outcome="portfolio"><i class="material-icons">view_quilt</i></h:link> </li>
+						<li class="active"> <h:commandLink action="#{userMBean.editForm}"><i class="material-icons">account_circle</i></h:commandLink> </li>
+						<li> <h:commandLink action="#{userMBean.logOut}"><i class="material-icons">exit_to_app</i></h:commandLink> </li>
+					</ul>
+				</h:form>
+			</nav>
+		</header>
+	
+		<!-- First section -->
+		<section class="section">
+	
+			<div>
+				<div class="row">
+					<div class="zi10 col s12 m12 l6 offset-l3 mt-5">
+						<div>
+						<h:messages styleClass="output flex center red-text"/>
+							<h:form enctype="multipart/form-data">
+								<div class="col s5">
+									<div class="file-field input-field">
+								      <div class="drag-image overhide" id="input-file-div">
+								        <i id="image-placeholder" class="material-icons">image</i>
+								        <h:inputFile value="#{userMBean.picture}" a:id="imgFile"/>
+								      </div>
+								    </div>
+								</div>
+								
+								<div class="col s7">
+									<div class="input-field row">
+										<h:inputText value="#{userMBean.user.name}" a:placeholder="Name" class="browser-default"></h:inputText>
+									</div>
+		
+									<div class="input-field row">
+										<h:inputText value="#{userMBean.user.username}" a:placeholder="Username" class="browser-default"/>
+									</div>
+									
+									<div class="input-field row">
+										<h:inputText value="#{userMBean.user.email}" a:placeholder="Email" class="browser-default"/>
+									</div>
+									
+									<div class="input-field row">
+										<h:inputText value="#{userMBean.user.alias}" a:placeholder="Alias" class="browser-default"/>
+									</div>
+		
+									<div class="input-field row">
+										<h:inputText value="#{userMBean.user.slogan}" a:placeholder="Slogan" class="browser-default"/>
+									</div>
+									
+									<div class="input-field row">
+										<h:inputText value="#{userMBean.user.bio}" a:placeholder="Bio" class="browser-default"/>
+									</div>
+		
+									<!-- Submit button -->
+									<div class="input-field row">
+										<h:commandButton action="#{userMBean.editSessionUser}" class="white right" value="Edit profile"/>
+									</div>
+								</div>			  
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<h:outputScript library="js" name="dashboard.js" />
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="content">
+
+		<section class="section lighten-1">
+
+		<div class="row mb-0">
+			<!-- Right side -->
+			<div class="col l7 hide-on-med-and-down h-100vh flex middle center">
+				<div class="container screens">
+					<div class="desktop z-depth-3 round white">
+						<div class="flex middle">
+							<div class="circle red"></div>
+							<div class="circle yellow"></div>
+							<div class="circle green"></div>
+						</div>
+						<div class="screen">
+							<h:graphicImage styleClass="responsive-img" library="img" name="screenshot-2.png"/>
+						</div>
+					</div>
+
+					<div class="desktop z-depth-3 round white">
+						<div class="flex middle">
+							<div class="circle red"></div>
+							<div class="circle yellow"></div>
+							<div class="circle green"></div>
+						</div>
+						<div class="screen">
+							<h:graphicImage styleClass="responsive-img" library="img" name="screenshot-1.png"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Left side -->
+			<div class="col s12 l5 h-100vh flex middle z-depth-3 round-left white container overauto">
+				<div class="container">
+					<!-- Brand and Logo -->
+					<div class="container flex center middle">		
+						<h:graphicImage styleClass="logo" library="img" name="artfolio.png"/>
+						<p class="brand">Artfolio</p>
+					</div>
+					<!-- Log in  -->
+					<div id="login" class="container switch-option">
+						<h:messages styleClass="output flex center red-text"/>
+						<h:form>
+						<!-- Username field -->
+							<div class="input-field row">
+								<h:inputText value="#{userMBean.user.username}" a:maxlength="50" a:placeholder="Username" class="browser-default"/>
+							</div>
+
+							<!-- Password field -->
+							<div class="input-field row">
+								<h:inputSecret value="#{userMBean.user.password}" a:maxlength="8" a:placeholder="Password" class="browser-default"/>
+							</div>
+
+							<!-- Submit button -->
+							<div class="input-field row">
+								<h:commandButton action="#{userMBean.logIn}" class="white right" value="Log in"/>
+							</div>
+							
+						</h:form>
+						<h:form>		
+
+							<!-- Sign up option -->
+	
+							<!-- Divider -->
+							<div class="mt-25 flex middle center row scratted-wrapper">
+								<hr class="line"/>
+								<span class="white bold scratted"> or </span>
+							</div>
+	
+							<!-- Switch button -->
+							<div class="input-field row">
+								<h:commandButton action="#{userMBean.signUpForm}" class="white right switch" value="Sign up now for free"/>
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</ui:define>
+</ui:composition>

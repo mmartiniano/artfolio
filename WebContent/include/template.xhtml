@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	>
+
+<h:head>
+	<title id="title">Artfolio</title>
+
+	<!-- Import Materialize css -->
+	<h:outputStylesheet library = "css" name="materialize.min.css"/>
+
+	<!-- Import custom stylesheet -->
+	<h:outputStylesheet library = "css" name="style.css"/>
+
+	<!-- Import Materialize icon font -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+
+	<!-- Import Quicksand font -->
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"></link>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<h:outputScript library="js" name="materialize.min.js" />
+	<h:outputScript library="js" name="lune.js" />
+</h:head>
+
+<h:body>
+	<div id="content">
+		<ui:insert name="content"></ui:insert>
+	</div>	
+</h:body>
+
+</html>
