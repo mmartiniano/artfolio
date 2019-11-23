@@ -14,6 +14,9 @@ import br.ufrn.imd.artfolio.repository.PostRepository;
 @Stateless
 public class PostService {
 	
+	private final String ACCESS_PATH =  "http://localhost:8000/post/";
+	private final String STORAGE_PATH = "C:/storage/post/";
+	
 	@Inject
 	private PostRepository postRepository;
 	
@@ -26,23 +29,41 @@ public class PostService {
 		
 		post = postRepository.add(post);
 		
-		String path = "C:/storage/post/";
 		String rename = Integer.toString(post.getId());
 		
 		UploadService uploadService = new UploadService(image);
 		
-		String uploadPath = uploadService.uploadFile(path, rename);
+		String uploadPath = uploadService.uploadFile(STORAGE_PATH, rename);
 		
 		if(uploadPath == null) 
 			throw new PostException("Could not save image");
 		
-		String accessPath = "http://localhost:8000/post/";
-		post.setImage(accessPath + uploadPath);
+		post.setImage(ACCESS_PATH + uploadPath);
 		
 		postRepository.update(post);
 		
 		return post;
 	}
+	
+	public Post update(Post post, Part image) throws PostException {
+		if(image == null)
+			throw new PostException("Image not found");
+		
+		String rename = Integer.toString(post.getId());
+		
+		UploadService uploadService = new UploadService(image);
+		
+		String uploadPath = uploadService.uploadFile(STORAGE_PATH, rename);
+		
+		if(uploadPath == null) 
+			throw new PostException("Could not save image");
+		
+		post.setImage(ACCESS_PATH + uploadPath);
+		
+		postRepository.update(post);
+		
+		return post;
+	}	
 	
 	public void remove(Post post) {
 		postRepository.remove(post);

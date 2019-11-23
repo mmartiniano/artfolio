@@ -11,6 +11,9 @@ import br.ufrn.imd.artfolio.repository.UserRepository;
 @Stateless
 public class UserService {
 	
+	private final String ACCESS_PATH =  "http://localhost:8000/user/";
+	private final String STORAGE_PATH = "C:/storage/user/";
+	
 	@Inject
 	private UserRepository userRepository;
 	
@@ -36,18 +39,16 @@ public class UserService {
 			throw new UserException("Credentials already taken");
 		
 		if(picture != null) {
-			String path = "C:/storage/user/";
+			
 			String rename = Integer.toString(user.getId());
 			
 			UploadService uploadService = new UploadService(picture);
 			
-			String uploadPath = uploadService.uploadFile(path, rename);
+			String uploadPath = uploadService.uploadFile(STORAGE_PATH, rename);
 			
 			
-			if(uploadPath != null) {
-				String accessPath = "http://localhost:8000/user/";
-				user.setImage(accessPath + uploadPath);
-			}
+			if(uploadPath != null) 
+				user.setImage(ACCESS_PATH + uploadPath);
 		}
 		
 		userRepository.update(user);

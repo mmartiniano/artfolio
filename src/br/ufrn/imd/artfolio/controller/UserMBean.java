@@ -119,7 +119,7 @@ public class UserMBean implements Serializable {
 			sessionUser = userService.update(user, picture);
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("sessionUser", sessionUser);
 			
-			return "dashboard/index.jsf?faces-redirect=true";	
+			return "index.jsf?faces-redirect=true";	
 			
 		} catch (UserException e) {
 			new ErrorMessage(e.getMessage());

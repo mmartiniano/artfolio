@@ -31,11 +31,11 @@
 	
 			<div>
 				<div class="row">
-					<div class="zi10 col s12 m12 l5 zd3 flex middle center round-right white container overauto aside">
+					<div class="zi10 col s12 m12 l4 offset-l4 mt-5">
 						<div>
 							<h:messages styleClass="output flex center red-text"/>
 							<h:form enctype="multipart/form-data">
-								<div class="file-field input-field">
+								<div class="file-field input-field flex center">
 							      <div class="drag-image" id="input-file-div">
 							        <i id="image-placeholder" class="material-icons">image</i>
 							        <h:inputFile value="#{postMBean.image}" a:id="imgFile"/>
@@ -52,29 +52,9 @@
 	
 								<!-- Submit button -->
 								<div class="input-field row">
-									<h:commandButton action="#{postMBean.create}" class="white right" value="Create new post"/>
+									<h:commandButton action="#{postMBean.edit}" class="white right" value="Edit post"/>
 								</div>
 							</h:form>
-						</div>
-					</div>
-					
-					<div class="row col l7 s12 m12 offset-l5 posts-list">
-						<div class="col s10 offset-s1 l6 offset-l3">
-							<ui:repeat var="post" value="#{postMBean.sessionUserPosts}">
-								<div class="image-list-item">
-									<h:graphicImage styleClass="responsive-img" value="#{post.image}"/>
-									<div class="right post-options">
-										<h:form>
-											<h:commandLink action="#{postMBean.editForm(post)}" a:mark="edit">
-												<i class="material-icons">edit</i>
-											</h:commandLink>
-											<h:commandLink action="#{postMBean.delete(post)}">
-												<i class="material-icons">delete</i>
-											</h:commandLink>
-										</h:form>
-									</div>
-								</div>
-							</ui:repeat>
 						</div>
 					</div>
 				</div>

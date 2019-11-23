@@ -17,7 +17,7 @@
 				
 				<h:form class="nav-form">
 					<ul class="bold right hide-on-med-and-down">
-						<li> <h:link outcome="index"><i class="material-icons">collections</i></h:link> </li>
+						<li> <h:commandLink action="#{postMBean.createForm}"><i class="material-icons">collections</i></h:commandLink> </li>
 						<li> <h:link a:target="_blank" outcome="portfolio"><i class="material-icons">view_quilt</i></h:link> </li>
 						<li class="active"> <h:commandLink action="#{userMBean.editForm}"><i class="material-icons">account_circle</i></h:commandLink> </li>
 						<li> <h:commandLink action="#{userMBean.logOut}"><i class="material-icons">exit_to_app</i></h:commandLink> </li>

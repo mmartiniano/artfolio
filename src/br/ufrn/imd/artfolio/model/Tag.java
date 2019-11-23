@@ -73,7 +73,7 @@ public class Tag {
 		if (getClass() != obj.getClass())
 			return false;
 		Tag other = (Tag) obj;
-		if (id != other.id)
+		if (name != other.name)
 			return false;
 		return true;
 	}

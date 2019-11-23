@@ -37,7 +37,7 @@ public class PostMBean implements Serializable {
 	private Part image;
 	
 	private String tags;
-	private ArrayList<Tag> tagsList = new ArrayList<Tag>();
+	private ArrayList<Tag> tagList = new ArrayList<Tag>();
 	private List<Post> sessionUserPosts;
 	
 	public PostMBean() {
@@ -47,20 +47,33 @@ public class PostMBean implements Serializable {
 	private void newPost() {
 		post = new Post();
 		tags = "";
-		tagsList = new ArrayList<Tag>();
+		tagList = new ArrayList<Tag>();
 	}
 	
 	public void updateSessionUserPosts() {
 		sessionUserPosts = postService.getUserPosts(userMBean.getSessionUser());
 	}
 	
-	private boolean requiredFieldsToCreate() {
+	private boolean requiredFieldsToSave() {
 		return image != null;
+	}
+	
+	public String createForm() {
+		newPost();
+		return "index.jsf?faces-redirect=true";		
+	}
+	
+	public String editForm(Post p) {
+		post = p;
+		tagList = (ArrayList<Tag>) tagService.getPostTags(p);
+		tags = tagListToString(tagList);
+		
+		return "edit-post.jsf?faces-redirect=true";
 	}
 	
 	public void create() {	
 		
-		if(! requiredFieldsToCreate()) {
+		if(! requiredFieldsToSave()) {
 			new ErrorMessage("Required fields are blank");
 
 		} else {
@@ -70,7 +83,7 @@ public class PostMBean implements Serializable {
 				post = postService.add(post, image);
 				
 				if(! tags.isBlank()) {
-					convertTags();
+					tagList = (ArrayList<Tag>) stringToTagList(tags);
 					persistTags();
 				}
 				
@@ -85,26 +98,73 @@ public class PostMBean implements Serializable {
 		
 	}
 	
+	public String edit() {
+		if(! requiredFieldsToSave()) {
+			new ErrorMessage("Required fields are blank");
+			return null;
+
+		} else {
+	
+			try {
+				post = postService.update(post, image);
+				
+				if(tags != tagListToString(tagList)) {
+					for(Tag tag : tagList) {
+						tagService.remove(tag);
+					}
+					
+					tagList = (ArrayList<Tag>) stringToTagList(tags);
+					persistTags();
+				}
+				
+				updateSessionUserPosts();
+				newPost();
+				return "index.jsf?faces-redirect=true";
+				
+			} catch (PostException e) {
+				new ErrorMessage(e.getMessage());
+				return null;
+			}
+						
+		}
+	}
+	
 	public void delete(Post p) {
 		postService.remove(p);
 		updateSessionUserPosts();
 	}
 	
-	private void convertTags() {
-		String[] tagSplit = tags.split(",");
+	private List<Tag> stringToTagList(String str) {
+		String[] split = str.split(", ");
+		ArrayList<Tag> list = new ArrayList<Tag>();
 		
-		for(String t : tagSplit) {
+		for(String token : split) {
 			Tag tag = new Tag();
-			tag.setName(t);
+			tag.setName(token);
 			tag.setPost(post);
 			
-			tagsList.add(tag);
+			list.add(tag);
 		}
+		
+		return list;
+	}
+	
+	private String tagListToString(List<Tag> list) {
+		String str = "";
+		
+		for(Tag tag: list) {
+			str += tag.getName() + ", ";
+		}
+		
+		// Remove extra ", " at the end of string
+		str = str.substring(0, str.length() - 2);
+		
+		return str;
 	}
 	
 	private void persistTags() {
 		try {
-			for(Tag tag : tagsList) {
+			for(Tag tag : tagList) {
 				tagService.add(tag);
 			}
 			
@@ -130,12 +190,12 @@ public class PostMBean implements Serializable {
 		this.tags = tags;
 	}
 
-	public ArrayList<Tag> getTagsList() {
-		return tagsList;
+	public ArrayList<Tag> getTagList() {
+		return tagList;
 	}
 
-	public void setTagsList(ArrayList<Tag> tagsList) {
-		this.tagsList = tagsList;
+	public void setTagList(ArrayList<Tag> tagsList) {
+		this.tagList = tagsList;
 	}
 
 	public Part getImage() {
